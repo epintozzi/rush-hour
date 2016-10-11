@@ -3,4 +3,9 @@ class Event < ActiveRecord::Base
   validates :event_name, uniqueness: true
 
   has_many :payloads
+  has_many :clients, through: :payloads
+
+  def hourly_breakdown
+
+  end
 end
