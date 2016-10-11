@@ -11,4 +11,5 @@ class Client < ActiveRecord::Base
   has_many :urls, through: :payloads
   has_many :user_agent_stats, through: :payloads
   has_many :resolutions, through: :payloads
+  has_many :events, through: :payloads
 end
