@@ -14,7 +14,6 @@ class UserAgentStat < ActiveRecord::Base
   end
 
   def self.breakdown_os
-  # require 'pry'; binding.pry
     group(:operating_system).count(:operating_system)
   end
 end
