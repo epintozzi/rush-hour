@@ -29,18 +29,23 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-      @identifier = identifier
       client = Client.find_by(identifier: identifier)
-      @payloads = Payload.where(client_id: client.id)
-      @requests = client.requests
-      @urls = client.urls
-      @user_agent_stats = client.user_agent_stats
-      @resolutions = client.resolutions
-      erb :show_client
+      if client.nil?
+        erb :error_no_client
+      elsif Payload.where(client_id: client.id).empty?
+        erb :error_no_payload
+      else
+        @identifier = identifier
+        @payloads = Payload.where(client_id: client.id)
+        @requests = client.requests
+        @urls = client.urls
+        @user_agent_stats = client.user_agent_stats
+        @resolutions = client.resolutions
+        erb :show_client
+      end
     end
 
     post '/sources/:identifier/data' do |identifier|
-
       if params[:payload].nil?
         status 400
         body "Missing Payload"
@@ -61,8 +66,21 @@ module RushHour
       end
     end
 
-
-
+    get '/sources/:identifier/urls/:relativepath' do |identifier, relativepath|
+      @identifier = identifier
+      @relative_path = relativepath
+      client = Client.find_by(identifier: identifier)
+      full_url = (client.root_url + "/" + relativepath) if !client.nil?
+      # require 'pry'; binding.pry
+      if client.nil?
+        erb :error_no_client
+      elsif !client.urls.find_by(url_address: full_url)
+        # !client.nil? && full_url.nil?
+        erb :error_no_url
+      else
+        @url = client.urls.find_by(url_address: full_url)
+        erb :show_url
+      end
+    end
   end
-
 end
