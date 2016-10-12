@@ -1,3 +1,4 @@
+<div class="container">
 <h1 id="events_index">Events</h1>
 
 <div id="events_list">
@@ -5,4 +6,5 @@
 <% unique_events.each do |event| %>
   <a href="/sources/<%= @identifier %>/events/<%= event.event_name %>"><%= event.event_name %></a></br>
 <% end %>
+</div>
 </div>

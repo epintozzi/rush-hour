@@ -1,5 +1,7 @@
+<div class="container">
 <h1 id="event_name">Event: <%= @event_name%></h1>
 
 <p id="hours"><% @grouped_times.each do |key, value| %>
   <%= key %>: <%= value.count %></br>
 <% end  %></p>
+</div>
