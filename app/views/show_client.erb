@@ -1,4 +1,4 @@
-<h1>Client: <%= @identifier %></h1>
+<h1 id="client_name">Client: <%= @identifier %></h1>
 
 <p>Average Response Time Across All Payloads: <%= @payloads.average_response_time %></p>
 <p>Max Response Time Across All Payloads: <%= @payloads.max_response_time %></p>
@@ -13,6 +13,6 @@
 <div class="">
   <% unique_urls = @urls.uniq %>
   <% unique_urls.each do |url| %>
-    <a href="/sources/<%= @identifier %>/urls/<%=url.format%>"><%=url.format%></a> 
+    <a href="/sources/<%= @identifier %>/urls/<%=url.format%>"><%=url.format%></a>
   <% end %>
 </div>
