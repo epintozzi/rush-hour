@@ -1,14 +1,14 @@
 <div class="container">
 <h1 id="client_name_url">Client: <%= @identifier %></h1>
-<h2 id="url">URL: <%= @relative_path %></h2>
+<h2 id="url">URL: <%= @full_url %></h2>
 
 <div id="url_stats">
-<p>Max Response Time: <%= @url.max_response_time %></p>
-<p>Min Response Time: <%= @url.min_response_time %></p>
-<p>Longest To Shortest Response Time: <%= @url.longest_to_shortest_response_time %></p>
-<p>Average Response Time: <%= @url.average_response_time %></p>
-<p>List of HTTP Verbs: <%= @url.list_of_http_verbs %></p>
-<p>Three Most Popular Referrers: <%= @url.three_most_popular_referrals %></p>
-<p>Three Most Popular User Agents: <%= @url.three_most_popular_user_agents %></p>
+<p><strong>Max Response Time: </strong><%= @url.max_response_time %> ms</p>
+<p><strong>Min Response Time: </strong><%= @url.min_response_time %> ms</p>
+<p><strong>Longest To Shortest Response Time (in ms): </strong><%= @url.longest_to_shortest_response_time %></p>
+<p><strong>Average Response Time: </strong><%= @url.average_response_time %> ms</p>
+<p><strong>List of HTTP Verbs: </strong><%= @url.list_of_http_verbs %></p>
+<p><strong>Three Most Popular Referrers: </strong><%= @url.three_most_popular_referrals %></p>
+<p><strong>Three Most Popular User Agents [browser, operating system]: </strong><%= @url.three_most_popular_user_agents %></p>
 </div>
 </div>

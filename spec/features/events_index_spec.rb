@@ -5,7 +5,7 @@ RSpec.describe "When a user views events index" do
     new_client
     visit("/sources/google/events_index")
     within("#events_index") do
-      expect(page).to have_content("Events")
+      expect(page).to have_content("Index of Events for Google")
     end
   end
 
