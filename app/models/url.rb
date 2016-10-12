@@ -7,7 +7,7 @@ class Url < ActiveRecord::Base
   has_many :user_agent_stats, through: :payloads
   has_many :requests, through: :payloads
 
-  def format
+  def get_relative_path
     url_address.partition(".")[2].partition("/")[2..-1].join
   end
 

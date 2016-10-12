@@ -448,4 +448,11 @@ RSpec.describe "Url" do
       expect(url.three_most_popular_user_agents).to eq(top_three)
     end
   end
+
+  describe ".get_relative_path" do
+    it "formats the full url" do
+      url = Url.create(url_address: "http://google.com/about")
+      expect(url.get_relative_path).to eq("about")
+    end
+  end
 end

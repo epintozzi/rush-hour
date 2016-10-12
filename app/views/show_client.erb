@@ -1,18 +1,23 @@
-<h1 id="client_name">Client: <%= @identifier %></h1>
+<div class="container">
+<h1 id="client_name">Client: <%= @identifier.capitalize %></h1>
 
-<p>Average Response Time Across All Payloads: <%= @payloads.average_response_time %></p>
-<p>Max Response Time Across All Payloads: <%= @payloads.max_response_time %></p>
-<p>Min Response Time Across All Payloads: <%= @payloads.min_response_time%></p>
-<p>Most Frequest Request Type: <%= @requests.most_frequent_request_type%></p>
-<p>List of all HTTP Verbs: <%= @requests.list_all_http_verbs_used%></p>
-<p>List of URLs, most requested to least requested: <%= @urls.most_to_least_requested%></p>
-<p>Web browser breakdown across all payloads: <%= @user_agent_stats.breakdown_browsers%></p>
-<p>OS breakdown across all payloads: <%= @user_agent_stats.breakdown_os%></p>
-<p>Screen Resolutions across all payloads: <%= @resolutions.resolutions_across_all_payloads%></p>
+<div id="client_stats">
+<p><strong> Average Response Time Across All Payloads:</strong> <%= @payloads.average_response_time %> ms</p>
+<p><strong>Max Response Time Across All Payloads: </strong><%= @payloads.max_response_time %> ms</p>
+<p><strong>Min Response Time Across All Payloads: </strong><%= @payloads.min_response_time%> ms</p>
+<p><strong>Most Frequent Request Type: </strong><%= @requests.most_frequent_request_type%></p>
+<p><strong>List of all HTTP Verbs: </strong><%= @requests.list_all_http_verbs_used%></p>
+<p><strong>List of URLs, most requested to least requested: </strong><%= @urls.most_to_least_requested%></p>
+<p><strong>Web browser breakdown across all payloads (browser => # of instances): </strong><%= @user_agent_stats.breakdown_browsers%></p>
+<p><strong>OS breakdown across all payloads (OS => # of instances): </strong><%= @user_agent_stats.breakdown_os%></p>
+<p><strong>Screen Resolutions across all payloads (Resolution dimensions [height,width] => # of instances): </strong><%= @resolutions.resolutions_across_all_payloads%></p>
+</div>
 
-<div class="">
+<div id="path">
+  <h3> Relative Paths for <%=@identifier.capitalize %></h3>
   <% unique_urls = @urls.uniq %>
   <% unique_urls.each do |url| %>
-    <a href="/sources/<%= @identifier %>/urls/<%=url.format%>"><%=url.format%></a>
+    <a href="/sources/<%= @identifier %>/urls/<%=url.get_relative_path%>"><%=url.get_relative_path%></a></br>
   <% end %>
+</div>
 </div>

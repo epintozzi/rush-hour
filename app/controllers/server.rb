@@ -77,13 +77,13 @@ module RushHour
       @identifier = identifier
       @relative_path = relativepath
       client = Client.find_by(identifier: identifier)
-      full_url = (client.root_url + "/" + relativepath) if !client.nil?
+      @full_url = (client.root_url + "/" + relativepath) if !client.nil?
       if client.nil?
         erb :error_no_client
-      elsif !client.urls.find_by(url_address: full_url)
+      elsif !client.urls.find_by(url_address: @full_url)
         erb :error_no_url
       else
-        @url = client.urls.find_by(url_address: full_url)
+        @url = client.urls.find_by(url_address: @full_url)
         erb :show_url
       end
     end
