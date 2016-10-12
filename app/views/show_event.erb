@@ -1,5 +1,5 @@
-<h1>Event: <%= @event_name%></h1>
+<h1 id="event_name">Event: <%= @event_name%></h1>
 
-<% @grouped_times.each do |key, value| %>
+<p id="hours"><% @grouped_times.each do |key, value| %>
   <%= key %>: <%= value.count %></br>
-<% end  %>
+<% end  %></p>

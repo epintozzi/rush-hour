@@ -45,6 +45,13 @@ module RushHour
       end
     end
 
+    get '/sources/:identifier/events_index' do |identifier|
+      @identifier = identifier
+      client = Client.find_by(identifier: identifier)
+      @events = client.events
+      erb :events_index
+    end
+
     post '/sources/:identifier/data' do |identifier|
       if params[:payload].nil?
         status 400
@@ -83,6 +90,7 @@ module RushHour
 
     get '/sources/:identifier/events/:eventname' do |identifier, eventname|
       client = Client.find_by(identifier: identifier)
+      @identifier = identifier
       if client.nil?
         erb :error_no_client
       elsif !client.events.find_by(event_name: eventname)
