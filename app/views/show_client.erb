@@ -15,6 +15,6 @@
 <div id="path">
   <% unique_urls = @urls.uniq %>
   <% unique_urls.each do |url| %>
-    <a href="/sources/<%= @identifier %>/urls/<%=url.format%>"><%=url.format%></a>
+    <a href="/sources/<%= @identifier %>/urls/<%=url.format%>"><%=url.format%></a></br>
   <% end %>
 </div>
