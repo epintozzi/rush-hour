@@ -35,7 +35,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload2 = Payload.create(  url_id:            url1.id,
                                   responded_in:       38,
@@ -45,7 +46,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload3 = Payload.create(  url_id:            url2.id,
                                   responded_in:       39,
@@ -55,7 +57,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       most_to_least = [url1.url_address, url2.url_address]
 
@@ -76,7 +79,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload2 = Payload.create(  url_id:            url1.id,
                                   responded_in:       38,
@@ -86,7 +90,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload3 = Payload.create(  url_id:            url2.id,
                                   responded_in:       39,
@@ -96,7 +101,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       expect(url1.max_response_time).to eq(38)
     end
@@ -115,7 +121,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload2 = Payload.create(  url_id:            url1.id,
                                   responded_in:       38,
@@ -125,7 +132,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload3 = Payload.create(  url_id:            url2.id,
                                   responded_in:       39,
@@ -135,7 +143,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       expect(url1.min_response_time).to eq(37)
     end
@@ -152,7 +161,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload2 = Payload.create(  url_id:            url1.id,
                                   responded_in:       40,
@@ -162,7 +172,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       payload3 = Payload.create(  url_id:            url2.id,
                                   responded_in:       32,
@@ -172,7 +183,8 @@ RSpec.describe "Url" do
                                   event_id:           4,
                                   user_agent_stat_id: 5,
                                   resolution_id:      6,
-                                  visitor_id:         7 )
+                                  visitor_id:         7,
+                                  client_id:          4 )
 
       expect(url1.average_response_time).to eq(39)
     end
@@ -191,7 +203,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload2 = Payload.create( url_id:             url1.id,
                                  responded_in:       40,
@@ -201,7 +214,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload3 = Payload.create( url_id:             url2.id,
                                  responded_in:       20,
@@ -211,7 +225,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       response_times = [40, 30]
       expect(url1.longest_to_shortest_response_time).to eq(response_times)
@@ -234,7 +249,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload2 = Payload.create( url_id:             url.id,
                                  responded_in:       30,
@@ -244,7 +260,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload3 = Payload.create( url_id:             url.id,
                                  responded_in:       20,
@@ -254,7 +271,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload4 = Payload.create( url_id:             url.id,
                                  responded_in:       40,
@@ -264,7 +282,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       all_verbs = ["GET", "POST" , "PUT"]
       expect(url.list_of_http_verbs).to eq(all_verbs)
@@ -288,7 +307,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload2 = Payload.create( url_id:             url.id,
                                  responded_in:       30,
@@ -298,7 +318,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload3 = Payload.create( url_id:             url.id,
                                  responded_in:       20,
@@ -308,7 +329,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload4 = Payload.create( url_id:             url.id,
                                  responded_in:       40,
@@ -318,7 +340,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload5 = Payload.create( url_id:             url.id,
                                  responded_in:       30,
@@ -328,7 +351,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload6 = Payload.create( url_id:             url.id,
                                  responded_in:       20,
@@ -338,7 +362,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: 5,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       top_three = ["http://coursereport.com", "http://google.com", "http://turing.io"]
       expect(url.three_most_popular_referrals).to eq(top_three)
@@ -361,7 +386,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas1.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload2 = Payload.create( url_id:             url.id,
                                  responded_in:       30,
@@ -371,7 +397,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas2.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload3 = Payload.create( url_id:             url.id,
                                  responded_in:       20,
@@ -381,7 +408,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas3.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload4 = Payload.create( url_id:             url.id,
                                  responded_in:       40,
@@ -391,7 +419,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas2.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload5 = Payload.create( url_id:             url.id,
                                  responded_in:       30,
@@ -401,7 +430,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas1.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       payload6 = Payload.create( url_id:             url.id,
                                  responded_in:       20,
@@ -411,7 +441,8 @@ RSpec.describe "Url" do
                                  event_id:           4,
                                  user_agent_stat_id: uas2.id,
                                  resolution_id:      6,
-                                 visitor_id:         7 )
+                                 visitor_id:         7,
+                                 client_id:          4 )
 
       top_three = [["Chrome", "Mac OS"], ["Chrome", "Windows"], ["Safari", "Mac OS"]]
       expect(url.three_most_popular_user_agents).to eq(top_three)
