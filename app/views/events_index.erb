@@ -1,5 +1,8 @@
-<h1>Events</h1>
+<h1 id="events_index">Events</h1>
 
-<% @events.each do |event| %>
-  <a href="/sources/<%= @identifier %>/events/<%= event.event_name %>"><%= event.event_name %></a>
+<div id="events_list">
+  <% unique_events = @events.uniq %>
+<% unique_events.each do |event| %>
+  <a href="/sources/<%= @identifier %>/events/<%= event.event_name %>"><%= event.event_name %></a></br>
 <% end %>
+</div>
