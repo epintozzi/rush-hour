@@ -6,7 +6,7 @@ RSpec.describe "When a valid user views their data" do
     new_payload
     visit("/sources/google")
     within("#client_name") do
-      expect(page).to have_content("Client: ")
+      expect(page).to have_content("Client: Google")
     end
   end
 
@@ -23,12 +23,12 @@ RSpec.describe "When a valid user views their data" do
       expect(page).to have_content('List of all HTTP Verbs:')
       expect(page).to have_content('List of URLs, most requested to least requested: ')
       expect(page).to have_content("http://google.com/about")
-      expect(page).to have_content('Web browser breakdown across all payloads: ')
+      expect(page).to have_content('Web browser breakdown across all payloads ')
       expect(page).to have_content("Chrome")
       expect(page).to have_content("2")
-      expect(page).to have_content('OS breakdown across all payloads: ')
+      expect(page).to have_content('OS breakdown across all payloads ')
       expect(page).to have_content("Macintosh")
-      expect(page).to have_content("Screen Resolutions across all payloads: ")
+      expect(page).to have_content("Screen Resolutions across all payloads ")
       expect(page).to have_content("1920")
       expect(page).to have_content("1080")
     end
