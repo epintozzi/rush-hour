@@ -1,9 +1,10 @@
 h1 {
   color: #2E2E2E;
-
+  text-align: center;
+  padding: 10px;
 }
 
-h2, h3 {
+h2, h3, h4 {
   color: #2E2E2E;
 
 }
@@ -16,6 +17,7 @@ p {
 a {
   color: #0489B1;
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 a:hover {
