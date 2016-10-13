@@ -46,81 +46,17 @@ RSpec.describe "UserAgentStat" do
 
   describe ".breakdown_browsers" do
     it "breaks down all browsers" do
-      uas1 = UserAgentStat.create(operating_system: "Windows", browser: "Chrome")
-      uas2 = UserAgentStat.create(operating_system: "Mac OS", browser: "Chrome")
-      uas3 = UserAgentStat.create(operating_system: "Mac OS", browser: "Safari")
-
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas1.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
-
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas2.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
-
-      payload3 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas3.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
+      build_linked_user_agent_stats_and_payloads
 
       expected = {"Chrome"=>2, "Safari"=>1}
       expect(UserAgentStat.breakdown_browsers).to eq(expected)
     end
   end
-  
+
   describe ".breakdown_os" do
     it "breaks down all operating systems" do
-      uas1 = UserAgentStat.create(operating_system: "Windows", browser: "Chrome")
-      uas2 = UserAgentStat.create(operating_system: "Mac OS", browser: "Chrome")
-      uas3 = UserAgentStat.create(operating_system: "Mac OS", browser: "Safari")
-
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas1.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
-
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas2.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
-
-      payload3 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas3.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7 )
-
+      build_linked_user_agent_stats_and_payloads
+      
       expected = {"Mac OS"=>2, "Windows"=>1}
       expect(UserAgentStat.breakdown_os).to eq(expected)
     end
