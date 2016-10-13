@@ -29,18 +29,14 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-      client = Client.find_by(identifier: identifier)
-      if client.nil?
+      @client = Client.find_by(identifier: identifier)
+      @identifier = identifier
+      if @client.nil?
         erb :error_no_client
-      elsif Payload.where(client_id: client.id).empty?
+      elsif Payload.where(client_id: @client.id).empty?
         erb :error_no_payload
       else
-        @identifier = identifier
-        @payloads = Payload.where(client_id: client.id)
-        @requests = client.requests
-        @urls = client.urls
-        @user_agent_stats = client.user_agent_stats
-        @resolutions = client.resolutions
+        @urls = @client.urls
         erb :show_client
       end
     end
