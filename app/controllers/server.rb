@@ -16,15 +16,12 @@ module RushHour
     post '/sources' do
       client = Client.new("identifier" => params[:identifier], "root_url" => params[:rootUrl])
       if params[:identifier].nil? || params[:rootUrl].nil?
-        status 400
-        body "Bad Request: Please include both an identifer and root url."
+        [400, "Bad Request: Please include both an identifer and root url."]
       elsif Client.exists?(:identifier => params[:identifier])
-        status 403
-        body "Forbidden: That identifier is already in use. Please choose a new identifier."
+        [403, "Forbidden: That identifier is already in use. Please choose a new identifier."]
       else
         client.save
-        status 200
-        body "Success: {'identifier':#{params[:identifier]}}"
+        [200, "Success: {'identifier':#{params[:identifier]}}"]
       end
     end
 
@@ -55,21 +52,17 @@ module RushHour
 
     post '/sources/:identifier/data' do |identifier|
       if params[:payload].nil?
-        status 400
-        body "Missing Payload"
+        [400, "Missing Payload"]
       elsif !Client.exists?(:identifier => identifier)
-        status 403
-        body "Application not registered"
+        [403, "Application not registered"]
       else
         parsed_data = PayloadParser.parser(params[:payload])
         payload = PayloadBuilder.build(parsed_data, identifier)
         if payload.new_record?
           payload.save
-          status 200
-          body "Yay"
+          [200, "Yay"]
         else
-          status 403
-          body "Already received request"
+          [403, "Already received request"]
         end
       end
     end
