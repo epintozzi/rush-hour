@@ -27,41 +27,9 @@ RSpec.describe "Url" do
       url1 = Url.create( url_address: "www.google.com")
       url2 = Url.create( url_address: "www.yahoo.com")
 
-      payload1 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       37,
-                                  requested_at:       "2013-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload2 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       38,
-                                  requested_at:       "2014-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload3 = Payload.create(  url_id:            url2.id,
-                                  responded_in:       39,
-                                  requested_at:       "2015-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
+      build_payloads_linked_with_urls(url1, url2)
 
       most_to_least = [url1.url_address, url2.url_address]
-
       expect(Url.most_to_least_requested).to eq(most_to_least)
     end
   end
@@ -71,38 +39,7 @@ RSpec.describe "Url" do
       url1 = Url.create( url_address: "www.google.com")
       url2 = Url.create( url_address: "www.yahoo.com")
 
-      payload1 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       37,
-                                  requested_at:       "2013-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload2 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       38,
-                                  requested_at:       "2014-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload3 = Payload.create(  url_id:            url2.id,
-                                  responded_in:       39,
-                                  requested_at:       "2015-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
+      build_payloads_linked_with_urls(url1, url2)
 
       expect(url1.max_response_time).to eq(38)
     end
@@ -113,38 +50,7 @@ RSpec.describe "Url" do
       url1 = Url.create( url_address: "www.google.com")
       url2 = Url.create( url_address: "www.yahoo.com")
 
-      payload1 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       37,
-                                  requested_at:       "2013-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload2 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       38,
-                                  requested_at:       "2014-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload3 = Payload.create(  url_id:            url2.id,
-                                  responded_in:       39,
-                                  requested_at:       "2015-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
+      build_payloads_linked_with_urls(url1, url2)
 
       expect(url1.min_response_time).to eq(37)
     end
@@ -153,40 +59,9 @@ RSpec.describe "Url" do
       url1 = Url.create( url_address: "www.google.com")
       url2 = Url.create( url_address: "www.yahoo.com")
 
-      payload1 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       38,
-                                  requested_at:       "2013-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
+      build_payloads_linked_with_urls(url1, url2)
 
-      payload2 = Payload.create(  url_id:            url1.id,
-                                  responded_in:       40,
-                                  requested_at:       "2014-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      payload3 = Payload.create(  url_id:            url2.id,
-                                  responded_in:       32,
-                                  requested_at:       "2015-02-16 21:38:28 -0700",
-                                  referral_id:        2,
-                                  request_id:         3,
-                                  event_id:           4,
-                                  user_agent_stat_id: 5,
-                                  resolution_id:      6,
-                                  visitor_id:         7,
-                                  client_id:          4 )
-
-      expect(url1.average_response_time).to eq(39)
+      expect(url1.average_response_time).to eq(37.5)
     end
   end
 
@@ -195,40 +70,9 @@ RSpec.describe "Url" do
       url1 = Url.create( url_address: "www.google.com")
       url2 = Url.create( url_address: "www.yahoo.com")
 
-      payload1 = Payload.create( url_id:             url1.id,
-                                 responded_in:       30,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_payloads_linked_with_urls(url1, url2)
 
-      payload2 = Payload.create( url_id:             url1.id,
-                                 responded_in:       40,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             url2.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      response_times = [40, 30]
+      response_times = [38, 37]
       expect(url1.longest_to_shortest_response_time).to eq(response_times)
     end
   end
@@ -237,53 +81,7 @@ RSpec.describe "Url" do
     it "return the list of all http verbs across payloads" do
       url = Url.create(url_address: "http://jumpstartlab.com")
 
-      request_1 = Request.create(request_type: "GET")
-      request_2 = Request.create(request_type: "PUT")
-      request_3 = Request.create(request_type: "POST")
-
-      payload1 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        1,
-                                 request_id:         request_1.id,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             url.id,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        1,
-                                 request_id:         request_2.id,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             url.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        1,
-                                 request_id:         request_3.id,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload4 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        1,
-                                 request_id:         request_1.id,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_linked_requests_and_payloads_for_url(url)
 
       all_verbs = ["GET", "POST" , "PUT"]
       expect(url.list_of_http_verbs).to eq(all_verbs)
@@ -295,75 +93,7 @@ RSpec.describe "Url" do
     it "returns three most popular referrers" do
       url = Url.create(url_address: "http://jumpstartlab.com")
 
-      ref1  = Referral.create(source: "http://google.com")
-      ref2  = Referral.create(source: "http://coursereport.com")
-      ref3  = Referral.create(source: "http://turing.io")
-
-      payload1 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        ref1.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             url.id,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        ref2.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             url.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        ref3.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload4 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        ref2.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload5 = Payload.create( url_id:             url.id,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        ref1.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload6 = Payload.create( url_id:             url.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        ref2.id,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_linked_referrals_and_payloads_for_url(url)
 
       top_three = ["http://coursereport.com", "http://google.com", "http://turing.io"]
       expect(url.three_most_popular_referrals).to eq(top_three)
@@ -374,75 +104,7 @@ RSpec.describe "Url" do
     it "returns three most popular user agents" do
       url = Url.create(url_address: "http://jumpstartlab.com")
 
-      uas1 = UserAgentStat.create(operating_system: "Windows", browser: "Chrome")
-      uas2 = UserAgentStat.create(operating_system: "Mac OS",  browser: "Chrome")
-      uas3 = UserAgentStat.create(operating_system: "Mac OS",  browser: "Safari")
-
-      payload1 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas1.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             url.id,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas2.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             url.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas3.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload4 = Payload.create( url_id:             url.id,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas2.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload5 = Payload.create( url_id:             url.id,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas1.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload6 = Payload.create( url_id:             url.id,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: uas2.id,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_linked_user_agent_stats_and_payloads_for_url(url)
 
       top_three = [["Chrome", "Mac OS"], ["Chrome", "Windows"], ["Safari", "Mac OS"]]
       expect(url.three_most_popular_user_agents).to eq(top_three)
@@ -452,6 +114,7 @@ RSpec.describe "Url" do
   describe ".get_relative_path" do
     it "formats the full url" do
       url = Url.create(url_address: "http://google.com/about")
+
       expect(url.get_relative_path).to eq("about")
     end
   end

@@ -8,7 +8,6 @@ class UserAgentStat < ActiveRecord::Base
   has_many :payloads
   has_many :clients, through: :payloads
 
-
   def self.breakdown_browsers
     group(:browser).count(:browser)
   end
