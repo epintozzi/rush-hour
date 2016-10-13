@@ -33,10 +33,6 @@ class Client < ActiveRecord::Base
     requests.list_all_http_verbs_used
   end
 
-  def urls_for_client
-    urls
-  end
-
   def breakdown_browsers_client
     uas = user_agent_stats.breakdown_browsers
     user_agent_array = uas.map do |key, value|
@@ -60,9 +56,6 @@ class Client < ActiveRecord::Base
   end
 
   def urls_for_client
-    url_array = urls.map do |url|
-      "#{url.url_address}"
-    end
-    url_array.uniq
+    urls.most_to_least_requested
   end
 end

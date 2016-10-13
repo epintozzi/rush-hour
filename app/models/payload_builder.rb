@@ -44,7 +44,7 @@ class PayloadBuilder
   def self.build_user_agent_stats(payload)
     user_agent = UserAgent.parse(payload[:user_agent])
     browser = payload[:browser] || user_agent.browser
-    operating_system = payload[:operating_system] || user_agent.platform
+    operating_system = payload[:operating_system] || (user_agent.platform).split('%')[0]
     UserAgentStat.where(browser: browser, operating_system: operating_system).first_or_create
   end
 
