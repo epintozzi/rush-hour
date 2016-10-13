@@ -6,7 +6,7 @@ RSpec.describe "When a valid user views their data" do
     new_payload
     visit("/sources/google")
     within("#client_name") do
-      expect(page).to have_content("Client: Google")
+      expect(page).to have_content("Google")
     end
   end
 
