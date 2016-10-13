@@ -8,8 +8,8 @@
 <div class="col-md-6"><strong>Most Frequent Request Type: </strong><p><%= @client.most_frequent_request_type_for_client%></p></div>
 <div class="col-md-6"><strong>List of all HTTP Verbs: </strong><p><%= @client.all_http_verbs_for_client%></p></div>
 <div class="col-md-6"><strong>List of URLs, most requested to least requested: </strong><p><%= @client.urls_for_client%></p></div>
-<div class="col-md-6"><strong>Web browser breakdown across all payloads (browser => # of instances): </strong><p><%= @client.breakdown_browsers_client%></p></div>
-<div class="col-md-6"><strong>OS breakdown across all payloads (OS => # of instances): </strong><p><%= @client.breakdown_os_client%><p></div>
+<div class="col-md-6"><strong>Web browser breakdown across all payloads: </strong><p><%= @client.breakdown_browsers_client%></p></div>
+<div class="col-md-6"><strong>OS breakdown across all payloads: </strong><p><%= @client.breakdown_os_client%><p></div>
 <div class="col-md-6"><strong>Screen Resolutions across all payloads: </strong><p><%= @client.resolutions_for_client%></p></div>
 </div>
 
