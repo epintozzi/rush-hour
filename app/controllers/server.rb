@@ -29,18 +29,14 @@ module RushHour
     end
 
     get '/sources/:identifier' do |identifier|
-      client = Client.find_by(identifier: identifier)
-      if client.nil?
+      @client = Client.find_by(identifier: identifier)
+      @identifier = identifier
+      if @client.nil?
         erb :error_no_client
-      elsif Payload.where(client_id: client.id).empty?
+      elsif Payload.where(client_id: @client.id).empty?
         erb :error_no_payload
       else
-        @identifier = identifier
-        @payloads = Payload.where(client_id: client.id)
-        @requests = client.requests
-        @urls = client.urls
-        @user_agent_stats = client.user_agent_stats
-        @resolutions = client.resolutions
+        @urls = @client.urls
         erb :show_client
       end
     end
@@ -77,13 +73,13 @@ module RushHour
       @identifier = identifier
       @relative_path = relativepath
       client = Client.find_by(identifier: identifier)
-      full_url = (client.root_url + "/" + relativepath) if !client.nil?
+      @full_url = (client.root_url + "/" + relativepath) if !client.nil?
       if client.nil?
         erb :error_no_client
-      elsif !client.urls.find_by(url_address: full_url)
+      elsif !client.urls.find_by(url_address: @full_url)
         erb :error_no_url
       else
-        @url = client.urls.find_by(url_address: full_url)
+        @url = client.urls.find_by(url_address: @full_url)
         erb :show_url
       end
     end
