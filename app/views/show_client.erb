@@ -11,13 +11,15 @@
 <div class="col-md-6"><strong>Web browser breakdown across all payloads: </strong><p><%= @client.breakdown_browsers_client%></p></div>
 <div class="col-md-6"><strong>OS breakdown across all payloads: </strong><p><%= @client.breakdown_os_client%><p></div>
 <div class="col-md-6"><strong>Screen Resolutions across all payloads: </strong><p><%= @client.resolutions_for_client%></p></div>
+
 </div>
 
+<div class = "text-center"><h3><a  style="font-size: 1em" href="/<%=@identifier%>/events_index">Events Index for <%= @identifier.capitalize %></a></h3></div>
 <div id="path" class="text-center">
-  <h3> Relative Paths for <%=@identifier.capitalize %></h3>
+  <h3> Relative Paths for <%=@identifier.capitalize %>:</h3>
   <% unique_urls = @urls.uniq %>
   <% unique_urls.each do |url| %>
-    <a href="/sources/<%= @identifier %>/urls/<%=url.get_relative_path%>"><%=url.get_relative_path%></a></br>
+    <a href="/sources/<%= @identifier %>/urls/<%=url.get_relative_path%>"><%=url.get_relative_path%></a><br/>
   <% end %>
 </div>
 </div>
