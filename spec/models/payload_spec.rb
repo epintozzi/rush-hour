@@ -161,66 +161,15 @@ RSpec.describe "Payload" do
 
   describe ".average_response_time" do
     it "returns average response time across all payloads" do
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_several_payloads
 
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-     expect(Payload.average_response_time).to eq(25)
+      expect(Payload.average_response_time).to eq(30)
     end
   end
 
   describe ".max_response_time" do
     it "returns the longest response time across all payloads" do
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             12,
-                                 responded_in:       40,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+     build_several_payloads
 
      expect(Payload.max_response_time).to eq(40)
     end
@@ -228,81 +177,18 @@ RSpec.describe "Payload" do
 
   describe ".min_response_time" do
     it "returns the shortest response time across all payloads" do
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             12,
-                                 responded_in:       40,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
+      build_several_payloads
+      
       expect(Payload.min_response_time).to eq(20)
     end
   end
 
   describe ".all_response_times" do
     it "returns sorted response times across all payloads" do
-      payload1 = Payload.create( url_id:             12,
-                                 responded_in:       40,
-                                 requested_at:       "2013-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload2 = Payload.create( url_id:             12,
-                                 responded_in:       30,
-                                 requested_at:       "2014-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
-
-      payload3 = Payload.create( url_id:             12,
-                                 responded_in:       20,
-                                 requested_at:       "2016-02-16",
-                                 referral_id:        2,
-                                 request_id:         3,
-                                 event_id:           4,
-                                 user_agent_stat_id: 5,
-                                 resolution_id:      6,
-                                 visitor_id:         7,
-                                 client_id:          4 )
+      build_several_payloads
 
       expected = [40, 30, 20]
       expect(Payload.all_response_times).to eq(expected)
     end
   end
-
 end

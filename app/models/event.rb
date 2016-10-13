@@ -4,8 +4,4 @@ class Event < ActiveRecord::Base
 
   has_many :payloads
   has_many :clients, through: :payloads
-
-  def hourly_breakdown
-
-  end
 end
