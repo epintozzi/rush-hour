@@ -57,5 +57,9 @@ class Client < ActiveRecord::Base
 
   def urls_for_client
     urls.most_to_least_requested
+<<<<<<< HEAD
   end
+=======
+   end
+>>>>>>> origin/master
 end
