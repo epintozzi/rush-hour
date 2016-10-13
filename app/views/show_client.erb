@@ -1,19 +1,19 @@
 <div class="container">
-<h1 id="client_name">Client: <%= @identifier.capitalize %></h1>
+<h1 id="client_name"><%= @identifier.capitalize %></h1>
 
-<div id="client_stats">
-<p><strong> Average Response Time Across All Payloads:</strong> <%= @client.average_response_time_for_client %> ms</p>
-<p><strong>Max Response Time Across All Payloads: </strong><%= @client.max_response_time_for_client %> ms</p>
-<p><strong>Min Response Time Across All Payloads: </strong><%= @client.min_response_time_for_client%> ms</p>
-<p><strong>Most Frequent Request Type: </strong><%= @client.most_frequent_request_type_for_client%></p>
-<p><strong>List of all HTTP Verbs: </strong><%= @client.all_http_verbs_for_client%></p>
-<p><strong>List of URLs, most requested to least requested: </strong><%= @client.urls_for_client%></p>
-<p><strong>Web browser breakdown across all payloads (browser => # of instances): </strong><%= @client.breakdown_browsers_client%></p>
-<p><strong>OS breakdown across all payloads (OS => # of instances): </strong><%= @client.breakdown_os_client%></p>
-<p><strong>Screen Resolutions across all payloads (Resolution dimensions [height,width] => # of instances): </strong><%= @client.resolutions_for_client%></p>
+<div id="client_stats" class="row well">
+<div class="col-md-6"><strong> Average Response Time Across All Payloads:</strong> <p><%= @client.average_response_time_for_client %> ms</p></div>
+<div class="col-md-6"><strong>Max Response Time Across All Payloads: </strong><p><%= @client.max_response_time_for_client %> ms</p></div>
+<div class="col-md-6"><strong>Min Response Time Across All Payloads: </strong><p><%= @client.min_response_time_for_client%> ms</p></div>
+<div class="col-md-6"><strong>Most Frequent Request Type: </strong><p><%= @client.most_frequent_request_type_for_client%></p></div>
+<div class="col-md-6"><strong>List of all HTTP Verbs: </strong><p><%= @client.all_http_verbs_for_client%></p></div>
+<div class="col-md-6"><strong>List of URLs, most requested to least requested: </strong><p><%= @client.urls_for_client%></p></div>
+<div class="col-md-6"><strong>Web browser breakdown across all payloads (browser => # of instances): </strong><p><%= @client.breakdown_browsers_client%></p></div>
+<div class="col-md-6"><strong>OS breakdown across all payloads (OS => # of instances): </strong><p><%= @client.breakdown_os_client%><p></div>
+<div class="col-md-6"><strong>Screen Resolutions across all payloads: </strong><p><%= @client.resolutions_for_client%></p></div>
 </div>
 
-<div id="path">
+<div id="path" class="text-center">
   <h3> Relative Paths for <%=@identifier.capitalize %></h3>
   <% unique_urls = @urls.uniq %>
   <% unique_urls.each do |url| %>
