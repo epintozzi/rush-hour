@@ -16,8 +16,8 @@ RSpec.describe "When a valid user views event data" do
     second_payload
     visit("/sources/google/events/show")
     within("#hours") do
-      expect(page).to have_content("6: 1")
-      expect(page).to have_content("5: 1")
+      expect(page).to have_content("Hour: 6, Count: 1")
+      expect(page).to have_content("Hour: 5, Count: 1")
     end
   end
 end
